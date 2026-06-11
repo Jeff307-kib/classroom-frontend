@@ -17,13 +17,14 @@ import {Layout} from "@/components/refine-ui/layout/layout.tsx";
 import Dashboard from "@/pages/dashboard.tsx";
 import SubjectsList from "@/pages/subjects/list.tsx";
 import SubjectsCreate from "@/pages/subjects/create.tsx";
+import {BookOpen, Home} from "lucide-react";
 
 function App() {
     return (
         <BrowserRouter>
             <RefineKbarProvider>
                 <ThemeProvider>
-                    <DevtoolsProvider>
+
                         <Refine
                             dataProvider={dataProvider}
                             notificationProvider={useNotificationProvider()}
@@ -32,19 +33,19 @@ function App() {
                                 syncWithLocation: true,
                                 warnWhenUnsavedChanges: true,
                             }}
-                            // resources={[
-                            //     {
-                            //         name: "Dashboard",
-                            //         list: '/',
-                            //         meta: {label: "Home", icon: <Home/>}
-                            //     },
-                            //     {
-                            //         name: "subjects",
-                            //         list: "/subjects",
-                            //         create: "/subjects/create",
-                            //         meta: {label: "Subjects", icon: <BookOpen/>}
-                            //     }
-                            // ]}
+                            resources={[
+                                {
+                                    name: "Dashboard",
+                                    list: '/',
+                                    meta: {label: "Home", icon: <Home/>}
+                                },
+                                {
+                                    name: "subjects",
+                                    list: "/subjects",
+                                    create: "/subjects/create",
+                                    meta: {label: "Subjects", icon: <BookOpen/>}
+                                }
+                            ]}
                         >
                             <Routes>
                                 <Route element={
@@ -64,8 +65,6 @@ function App() {
                             <UnsavedChangesNotifier/>
                             <DocumentTitleHandler/>
                         </Refine>
-                        <DevtoolsPanel/>
-                    </DevtoolsProvider>
                 </ThemeProvider>
             </RefineKbarProvider>
         </BrowserRouter>
