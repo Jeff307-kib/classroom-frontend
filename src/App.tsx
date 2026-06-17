@@ -11,19 +11,21 @@ import "./App.css";
 import {Toaster} from "./components/refine-ui/notification/toaster";
 import {useNotificationProvider} from "./components/refine-ui/notification/use-notification-provider";
 import {ThemeProvider} from "./components/refine-ui/theme/theme-provider";
-import {dataProvider} from "./providers/data";
+
 
 import {Layout} from "@/components/refine-ui/layout/layout.tsx";
 import Dashboard from "@/pages/dashboard.tsx";
 import SubjectsList from "@/pages/subjects/list.tsx";
 import SubjectsCreate from "@/pages/subjects/create.tsx";
 import {BookOpen, Home} from "lucide-react";
+import {dataProvider} from "@/providers/data.ts";
 
 function App() {
     return (
         <BrowserRouter>
             <RefineKbarProvider>
                 <ThemeProvider>
+                    <DevtoolsProvider>
 
                         <Refine
                             dataProvider={dataProvider}
@@ -65,6 +67,8 @@ function App() {
                             <UnsavedChangesNotifier/>
                             <DocumentTitleHandler/>
                         </Refine>
+                        <DevtoolsPanel/>
+                    </DevtoolsProvider>
                 </ThemeProvider>
             </RefineKbarProvider>
         </BrowserRouter>
